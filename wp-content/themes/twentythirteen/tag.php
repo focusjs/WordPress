@@ -1,10 +1,10 @@
 <?php
 /**
- * The template for displaying Tag pages.
+ * The template for displaying Tag pages
  *
  * Used to display archive-type pages for posts in a tag.
  *
- * Learn more: http://codex.wordpress.org/Template_Hierarchy
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package WordPress
  * @subpackage Twenty_Thirteen
@@ -18,7 +18,12 @@ get_header(); ?>
 
 		<?php if ( have_posts() ) : ?>
 			<header class="archive-header">
-				<h1 class="archive-title"><?php printf( __( 'Tag Archives: %s', 'twentythirteen' ), single_tag_title( '', false ) ); ?></h1>
+				<h1 class="archive-title">
+				<?php
+				/* translators: Tag title. */
+				printf( __( 'Tag Archives: %s', 'twentythirteen' ), single_tag_title( '', false ) );
+				?>
+				</h1>
 
 				<?php if ( tag_description() ) : // Show an optional tag description ?>
 				<div class="archive-meta"><?php echo tag_description(); ?></div>
@@ -26,7 +31,10 @@ get_header(); ?>
 			</header><!-- .archive-header -->
 
 			<?php /* The loop */ ?>
-			<?php while ( have_posts() ) : the_post(); ?>
+			<?php
+			while ( have_posts() ) :
+				the_post();
+				?>
 				<?php get_template_part( 'content', get_post_format() ); ?>
 			<?php endwhile; ?>
 
